@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2016 a las 10:48:32
--- Versión del servidor: 5.6.26
--- Versión de PHP: 5.6.12
+-- Tiempo de generación: 22-10-2018 a las 05:47:30
+-- Versión del servidor: 5.7.14
+-- Versión de PHP: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `simple_invoice`
+-- Base de datos: `id7569327_bdpersona`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE IF NOT EXISTS `clientes` (
+CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
   `nombre_cliente` varchar(255) NOT NULL,
   `telefono_cliente` char(30) NOT NULL,
@@ -36,21 +36,28 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `nombre_cliente`, `telefono_cliente`, `email_cliente`, `direccion_cliente`, `status_cliente`, `date_added`) VALUES
+(1, 'JUANA', '+50222584283', 'info@petmarketgt.com', 'guatemala1', 1, '2018-10-22 05:01:03');
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `currencies`
 --
 
-CREATE TABLE IF NOT EXISTS `currencies` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `currencies` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `symbol` varchar(255) NOT NULL,
   `precision` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `thousand_separator` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `decimal_separator` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `currencies`
@@ -73,7 +80,7 @@ INSERT INTO `currencies` (`id`, `name`, `symbol`, `precision`, `thousand_separat
 (14, 'Norske Kroner', 'kr ', '2', '.', ',', 'NOK'),
 (15, 'New Zealand Dollar', '$', '2', ',', '.', 'NZD'),
 (16, 'Vietnamese Dong', 'VND ', '0', '.', ',', 'VND'),
-(17, 'Swiss Franc', 'CHF ', '2', '''', '.', 'CHF'),
+(17, 'Swiss Franc', 'CHF ', '2', '\'', '.', 'CHF'),
 (18, 'Quetzal Guatemalteco', 'Q', '2', ',', '.', 'GTQ'),
 (19, 'Malaysian Ringgit', 'RM', '2', ',', '.', 'MYR'),
 (20, 'Real Brasile&ntilde;o', 'R$', '2', '.', ',', 'BRL'),
@@ -96,7 +103,7 @@ INSERT INTO `currencies` (`id`, `name`, `symbol`, `precision`, `thousand_separat
 -- Estructura de tabla para la tabla `detalle_factura`
 --
 
-CREATE TABLE IF NOT EXISTS `detalle_factura` (
+CREATE TABLE `detalle_factura` (
   `id_detalle` int(11) NOT NULL,
   `numero_factura` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
@@ -104,13 +111,20 @@ CREATE TABLE IF NOT EXISTS `detalle_factura` (
   `precio_venta` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `detalle_factura`
+--
+
+INSERT INTO `detalle_factura` (`id_detalle`, `numero_factura`, `id_producto`, `cantidad`, `precio_venta`) VALUES
+(1, 1, 1, 1, 8);
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `facturas`
 --
 
-CREATE TABLE IF NOT EXISTS `facturas` (
+CREATE TABLE `facturas` (
   `id_factura` int(11) NOT NULL,
   `numero_factura` int(11) NOT NULL,
   `fecha_factura` datetime NOT NULL,
@@ -121,13 +135,20 @@ CREATE TABLE IF NOT EXISTS `facturas` (
   `estado_factura` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `facturas`
+--
+
+INSERT INTO `facturas` (`id_factura`, `numero_factura`, `fecha_factura`, `id_cliente`, `id_vendedor`, `condiciones`, `total_venta`, `estado_factura`) VALUES
+(1, 1, '2018-10-22 05:01:25', 1, 1, '1', '9.04', 1);
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `perfil`
 --
 
-CREATE TABLE IF NOT EXISTS `perfil` (
+CREATE TABLE `perfil` (
   `id_perfil` int(11) NOT NULL,
   `nombre_empresa` varchar(150) NOT NULL,
   `direccion` varchar(255) NOT NULL,
@@ -139,14 +160,14 @@ CREATE TABLE IF NOT EXISTS `perfil` (
   `impuesto` int(2) NOT NULL,
   `moneda` varchar(6) NOT NULL,
   `logo_url` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfil`
 --
 
 INSERT INTO `perfil` (`id_perfil`, `nombre_empresa`, `direccion`, `ciudad`, `codigo_postal`, `estado`, `telefono`, `email`, `impuesto`, `moneda`, `logo_url`) VALUES
-(1, 'SISTEMAS WEB LA', 'Colonias Los Andes  #250', 'Moncagua', '3301', 'San Miguel', '+(503) 2682-555', 'info@obedalvarado.pw', 13, '$', 'img/1478792451_google30.png');
+(1, 'PET MARKET', '11 Ave B 14-75 zona 17 colonia Colegio de Maestros', 'Guatemala', '1001', 'Guatemala', '+50222584283', 'info@petmarketgt.com', 12, 'Q', 'img/1540184494_pet.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,7 +175,7 @@ INSERT INTO `perfil` (`id_perfil`, `nombre_empresa`, `direccion`, `ciudad`, `cod
 -- Estructura de tabla para la tabla `products`
 --
 
-CREATE TABLE IF NOT EXISTS `products` (
+CREATE TABLE `products` (
   `id_producto` int(11) NOT NULL,
   `codigo_producto` char(20) NOT NULL,
   `nombre_producto` char(255) NOT NULL,
@@ -163,13 +184,65 @@ CREATE TABLE IF NOT EXISTS `products` (
   `precio_producto` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `products`
+--
+
+INSERT INTO `products` (`id_producto`, `codigo_producto`, `nombre_producto`, `status_producto`, `date_added`, `precio_producto`) VALUES
+(1, '1', 'SHAMPOO', 1, '2018-10-22 05:01:20', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbcontactos`
+--
+
+CREATE TABLE `tbcontactos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `edad` int(3) NOT NULL,
+  `direccion` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbcontactos`
+--
+
+INSERT INTO `tbcontactos` (`id`, `nombre`, `edad`, `direccion`) VALUES
+(4, 'juan', 34, 'cr 55 # 155 - 50'),
+(10, 'fila001', 32, 'cl 123123');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbusuario`
+--
+
+CREATE TABLE `tbusuario` (
+  `id` int(11) NOT NULL,
+  `login` varchar(35) NOT NULL,
+  `pass` varchar(35) NOT NULL,
+  `nombre` varchar(35) NOT NULL,
+  `perfil` varchar(100) NOT NULL,
+  `activo` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbusuario`
+--
+
+INSERT INTO `tbusuario` (`id`, `login`, `pass`, `nombre`, `perfil`, `activo`) VALUES
+(1, 'admin', 'admin', 'Santiago', 'administrador', 1),
+(2, 'max', 'max', 'max', 'digitador', 1),
+(3, 'carolina', 'carolina', 'carolina tolosa', 'consulta', 1);
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tmp`
 --
 
-CREATE TABLE IF NOT EXISTS `tmp` (
+CREATE TABLE `tmp` (
   `id_tmp` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad_tmp` int(11) NOT NULL,
@@ -183,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `tmp` (
 -- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `user_id` int(11) NOT NULL COMMENT 'auto incrementing user_id of each user, unique index',
   `firstname` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `lastname` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -191,14 +264,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s password in salted and hashed format',
   `user_email` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s email, unique',
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data';
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `user_name`, `user_password_hash`, `user_email`, `date_added`) VALUES
-(1, 'Obed', 'Alvarado', 'admin', '$2y$10$MPVHzZ2ZPOWmtUUGCq3RXu31OTB.jo7M9LZ7PmPQYmgETSNn19ejO', 'admin@admin.com', '2016-05-21 15:06:00');
+(1, 'Werner', 'Ovalle', 'admin', '$2y$10$MPVHzZ2ZPOWmtUUGCq3RXu31OTB.jo7M9LZ7PmPQYmgETSNn19ejO', 'admin@admin.com', '2016-05-21 15:06:00');
 
 --
 -- Índices para tablas volcadas
@@ -245,6 +318,18 @@ ALTER TABLE `products`
   ADD UNIQUE KEY `codigo_producto` (`codigo_producto`);
 
 --
+-- Indices de la tabla `tbcontactos`
+--
+ALTER TABLE `tbcontactos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tbusuario`
+--
+ALTER TABLE `tbusuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `tmp`
 --
 ALTER TABLE `tmp`
@@ -266,42 +351,52 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbcontactos`
+--
+ALTER TABLE `tbcontactos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `tbusuario`
+--
+ALTER TABLE `tbusuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tmp`
 --
 ALTER TABLE `tmp`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index',AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index', AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

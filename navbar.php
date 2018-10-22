@@ -28,8 +28,8 @@
     <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-lock'></i> Usuarios</a></li>
     <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-tasks'></i> Bitacora</a></li>
     <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-ice-lolly-tasted'></i> Programacion de citas</a></li>
-    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-header'></i> Historial Medico</a></li>
-    <li class="<?php echo $active_usuarios;?>"><a href="listar.php"><i  class='glyphicon glyphicon-briefcase'></i> Empleados</a></li>
+    <li class="<?php echo $active_usuarios;?>"><a href="listar.php"><i  class='glyphicon glyphicon-scale'></i> Diagnosticos</a></li>
+    <li class="<?php echo $active_clientes;?>"><a href="listar.php"><i class='glyphicon glyphicon-baby-formula'></i> Mascotas</a></li>
     
 		<li class="<?php if(isset($active_perfil)){echo $active_perfil;}?>"><a href="perfil.php"><i  class='glyphicon glyphicon-cog'></i> Configuración</a></li>
        </ul>

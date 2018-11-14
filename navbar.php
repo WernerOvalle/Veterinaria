@@ -24,7 +24,8 @@
       <ul class="nav navbar-nav">
         <li class="<?php echo $active_facturas;?>"><a href="facturas.php"><i class='glyphicon glyphicon-list-alt'></i> Facturas <span class="sr-only">(current)</span></a></li>
         <li class="<?php echo $active_productos;?>"><a href="productos.php"><i class='glyphicon glyphicon-barcode'></i> Productos</a></li>
-		<li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
+        <li class="<?php echo $active_productos;?>"><a href="servicios.php"><i class='glyphicon glyphicon-barcode'></i> Servicios</a></li>
+  	<li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
     <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-lock'></i> Usuarios</a></li>
     <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-tasks'></i> Bitacora</a></li>
     <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-ice-lolly-tasted'></i> Programacion de citas</a></li>

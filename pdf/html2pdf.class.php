@@ -9,7 +9,7 @@
  * @version 4.03
  */
 ini_set("memory_limit","256M");//memoria maxima para cargar el archivo
-set_time_limit(500);//tiempo maximo de ejecucion en segundos
+//set_time_limit(1000);//tiempo maximo de ejecucion en segundos
 if (!defined('__CLASS_HTML2PDF__')) {
 
     define('__CLASS_HTML2PDF__', '4.03');
